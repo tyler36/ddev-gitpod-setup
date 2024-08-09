@@ -71,11 +71,11 @@ teardown() {
   grep -q 'Custom Laravel Gitpod' "${TESTDIR}/.gitpod.yml"
 }
 
-# @test "install from release" {
-#   set -eu -o pipefail
-#   cd ${TESTDIR} || ( printf "unable to cd to ${TESTDIR}\n" && exit 1 )
-#   echo "# ddev get ddev/ddev-addon-template with project ${PROJNAME} in ${TESTDIR} ($(pwd))" >&3
-#   ddev get ddev/ddev-addon-template
-#   ddev restart >/dev/null
-#   health_checks
-# }
+@test "install from release" {
+  set -eu -o pipefail
+  cd ${TESTDIR} || ( printf "unable to cd to ${TESTDIR}\n" && exit 1 )
+  echo "# ddev get tyler36/ddev-gitpod-setup with project ${PROJNAME} in ${TESTDIR} ($(pwd))" >&3
+  ddev get tyler36/ddev-gitpod-setup
+  ddev restart >/dev/null
+  health_checks
+}
