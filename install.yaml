@@ -1,0 +1,28 @@
+name: ddev-gitpod-setup
+
+project_files:
+  - gitpod-setup/
+
+post_install_actions:
+  # Copy over a base gitpod if one does not exist.
+  - |
+    if ! test -f ${DDEV_APPROOT}/.gitpod.yml; then
+      cp ${DDEV_APPROOT}/.ddev/gitpod-setup/.gitpod.yml ${DDEV_APPROOT}/.gitpod.yml
+    fi
+  # If we control the ".gitpod.yml", merge in the framework setup.
+  - |
+    if grep -q '#ddev-generated' ${DDEV_APPROOT}/.gitpod.yml; then
+      PROJECT_TASKS="$DDEV_PROJECT_TYPE.yml"
+      if test -f ${DDEV_APPROOT}/.ddev/gitpod-setup/${PROJECT_TASKS}; then
+        cat ${DDEV_APPROOT}/.ddev/gitpod-setup/${PROJECT_TASKS} > ${DDEV_APPROOT}/.gitpod.yml
+      fi
+      cat ${DDEV_APPROOT}/.ddev/gitpod-setup/.gitpod.yml >> ${DDEV_APPROOT}/.gitpod.yml
+    fi
+
+removal_actions:
+  - |
+    if grep -q '#ddev-generated' ${DDEV_APPROOT}/.gitpod.yml; then
+      rm -f ${DDEV_APPROOT}/.gitpod.yml
+    else
+      echo "Unwilling to remove '${DDEV_APPROOT}/.gitpod.yml' because it does not have #ddev-generated in it; you can manually delete it if it is safe to delete."
+    fi
