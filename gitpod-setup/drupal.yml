@@ -1,0 +1,11 @@
+## -------------------------
+## Define how Gitpod prepares and builds your project and how it can start the project’s development server(s).
+## @see https://www.gitpod.io/docs/references/gitpod-yml#tasks
+tasks:
+  - init: |
+      ddev start -y
+      ddev composer install
+      ddev drush si -y --account-pass=admin --site-name='ddev_gitpod'
+    command: |
+      ddev start -y
+      gp ports await 8080 && gp preview $(gp url 8080)
