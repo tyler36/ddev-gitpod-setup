@@ -79,3 +79,14 @@ teardown() {
   ddev restart >/dev/null
   health_checks
 }
+
+@test "it configures gitpod for Drupal" {
+  set -eu -o pipefail
+  cd ${TESTDIR}
+  echo "# ddev get ${DIR} with project ${PROJNAME} in ${TESTDIR} ($(pwd))" >&3
+  ddev config --project-type=drupal
+  ddev get ${DIR}
+
+  health_checks
+  grep -q 'ddev drush si -y' "${TESTDIR}/.gitpod.yml"
+}
