@@ -24,8 +24,6 @@ It does this by generating a `.gitpod.yml` file which includes:
 
 @see <https://www.gitpod.io/docs/references/gitpod-yml> for options settings.
 
-![template button](images/template-button.png)
-
 ## Getting started
 
 1. Install add-on
