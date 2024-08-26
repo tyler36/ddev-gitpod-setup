@@ -24,8 +24,6 @@ It does this by generating a `.gitpod.yml` file which includes:
 
 @see <https://www.gitpod.io/docs/references/gitpod-yml> for options settings.
 
-![template button](images/template-button.png)
-
 ## Getting started
 
 1. Install add-on
@@ -75,7 +73,7 @@ This approach works best if you want to:
 PRs are welcome, especially when accompanied with tests.
 
 Project-type files are also welcome. However, please take care to keep them as minimal and un-opinionated.
-We all our preferred setup environment and "essential" extensions and add-ons. They are outside this add-ons scope. @see [customizations](#customizing).
+We all have our preferred setup environment and "essential" extensions and add-ons. They are outside this add-ons scope. @see [customizations](#customizing).
 
 ### How to debug tests (Github Actions)
 
