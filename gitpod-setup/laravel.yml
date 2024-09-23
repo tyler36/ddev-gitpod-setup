@@ -11,5 +11,7 @@ tasks:
       ddev npm install
       ddev artisan key:generate
     command: |
+      # Upgrade DDEV to current stable version
+      sudo apt update >/dev/null 2>&1 && sudo apt -qq -y install ddev
       ddev start -y
       gp ports await 8080 && gp preview $(gp url 8080)
