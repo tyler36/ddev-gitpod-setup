@@ -1,4 +1,4 @@
-name: ddev-gitpod-setup
+name: gitpod-setup
 
 project_files:
   - gitpod-setup/

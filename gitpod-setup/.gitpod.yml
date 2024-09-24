@@ -1,6 +1,6 @@
 
 ##ddev-generated
-image: ddev/ddev-gitpod-base:20240702
+image: ddev/ddev-gitpod-base:20240923
 
 ## -------------------------
 ## Configure the VS Code editor.
