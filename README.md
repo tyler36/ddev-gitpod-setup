@@ -40,7 +40,7 @@ It does this by generating a `.gitpod.yml` file which includes:
 
 ### Full control
 
-You can take over the `.gitpod.yml` and change it as you see fit, but most people don't need to do that. 
+You can take over the `.gitpod.yml` and change it as you see fit, but most people don't need to do that.
 
 - Remove `#ddev-generated` from `.gitpod.yml`. (This add-on will no longer manage the file.)
 - Make changes, as require.
