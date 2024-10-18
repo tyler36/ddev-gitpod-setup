@@ -28,7 +28,7 @@ It does this by generating a `.gitpod.yml` file which includes:
 1. Install add-on
 
     ```shell
-    ddev get tyler36/ddev-gitpod-setup
+    ddev addon get tyler36/ddev-gitpod-setup
     ```
 
 2. Commit files to repository. All that really matters is the .gitpod.yml, but it does no harm to commit all the files the add-on creates.
