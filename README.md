@@ -18,7 +18,7 @@ It does this by generating a `.gitpod.yml` file which includes:
 - generic framework-specific tasks
 - DDEV base image
 - DDEV port settings
-- VSCode extensions
+- VS Code extensions
 - GitHub preferences
 
 @see [Gitpod documentation](https://www.gitpod.io/docs/references/gitpod-yml) for options settings. Most people don't need to change anything after just getting this setup.
