@@ -27,6 +27,14 @@ It does this by generating a `.gitpod.yml` file which includes:
 
 1. Install add-on
 
+    For DDEV v1.23.5 or above run
+
+    ```shell
+    ddev add-on get tyler36/ddev-gitpod-setup
+    ```
+
+    For earlier versions of DDEV run
+
     ```shell
     ddev get tyler36/ddev-gitpod-setup
     ```
