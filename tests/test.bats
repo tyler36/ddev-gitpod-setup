@@ -30,13 +30,13 @@ teardown() {
 @test "install from directory" {
   set -eu -o pipefail
   cd ${TESTDIR}
-  echo "# ddev get ${DIR} with project ${PROJNAME} in ${TESTDIR} ($(pwd))" >&3
-  ddev get ${DIR}
+  echo "# ddev add-on get ${DIR} with project ${PROJNAME} in ${TESTDIR} ($(pwd))" >&3
+  ddev add-on get ${DIR}
   ddev restart
   health_checks
 
   # We added custom removal code, so lets check that it works.
-  ddev get --remove ${DIR}
+  ddev add-on remove ${DIR}
   if test -f "${TESTDIR}/.gitpod.yml"; then
     echo "'${TESTDIR}/.gitpod.yml' exists but it should NOT."
     exit 1;
@@ -46,9 +46,9 @@ teardown() {
 @test "it configures gitpod for Laravel" {
   set -eu -o pipefail
   cd ${TESTDIR}
-  echo "# ddev get ${DIR} with project ${PROJNAME} in ${TESTDIR} ($(pwd))" >&3
+  echo "# ddev add-on get ${DIR} with project ${PROJNAME} in ${TESTDIR} ($(pwd))" >&3
   ddev config --project-type=laravel
-  ddev get ${DIR}
+  ddev add-on get ${DIR}
 
   health_checks
   grep -q 'ddev artisan key:generate' "${TESTDIR}/.gitpod.yml"
@@ -57,14 +57,14 @@ teardown() {
 @test "it generates file with custom projectType" {
   set -eu -o pipefail
   cd ${TESTDIR}
-  echo "# ddev get ${DIR} with project ${PROJNAME} in ${TESTDIR} ($(pwd))" >&3
+  echo "# ddev add-on get ${DIR} with project ${PROJNAME} in ${TESTDIR} ($(pwd))" >&3
   ddev config --project-type=laravel
 
   # Add a custom setup config for Laravel
   mkdir -p "${TESTDIR}/.ddev/gitpod-setup"
   cp "$DIR/tests/testdata/custom-laravel.yml" "${TESTDIR}/.ddev/gitpod-setup/laravel.yml"
 
-  ddev get ${DIR}
+  ddev add-on get ${DIR}
 
   health_checks
   grep -q 'ddev artisan key:generate' "${TESTDIR}/.gitpod.yml"
@@ -75,8 +75,8 @@ teardown() {
 @test "install from release" {
   set -eu -o pipefail
   cd ${TESTDIR} || ( printf "unable to cd to ${TESTDIR}\n" && exit 1 )
-  echo "# ddev get tyler36/ddev-gitpod-setup with project ${PROJNAME} in ${TESTDIR} ($(pwd))" >&3
-  ddev get tyler36/ddev-gitpod-setup
+  echo "# ddev add-on get tyler36/ddev-gitpod-setup with project ${PROJNAME} in ${TESTDIR} ($(pwd))" >&3
+  ddev add-on get tyler36/ddev-gitpod-setup
   ddev restart >/dev/null
   health_checks
 }
@@ -84,9 +84,9 @@ teardown() {
 @test "it configures gitpod for Drupal" {
   set -eu -o pipefail
   cd ${TESTDIR}
-  echo "# ddev get ${DIR} with project ${PROJNAME} in ${TESTDIR} ($(pwd))" >&3
+  echo "# ddev add-on get ${DIR} with project ${PROJNAME} in ${TESTDIR} ($(pwd))" >&3
   ddev config --project-type=drupal
-  ddev get ${DIR}
+  ddev add-on get ${DIR}
 
   health_checks
   grep -q 'ddev drush si -y' "${TESTDIR}/.gitpod.yml"
