@@ -36,7 +36,7 @@ teardown() {
   health_checks
 
   # We added custom removal code, so lets check that it works.
-  ddev add-on get --remove ${DIR}
+  ddev add-on remove ${DIR}
   if test -f "${TESTDIR}/.gitpod.yml"; then
     echo "'${TESTDIR}/.gitpod.yml' exists but it should NOT."
     exit 1;
