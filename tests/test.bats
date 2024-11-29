@@ -91,3 +91,15 @@ teardown() {
   health_checks
   grep -q 'ddev drush si -y' "${TESTDIR}/.gitpod.yml"
 }
+
+@test "it configures gitpod for older Drupal versions" {
+  set -eu -o pipefail
+  cd ${TESTDIR}
+  echo "# ddev add-on get ${DIR} with project ${PROJNAME} in ${TESTDIR} ($(pwd))" >&3
+  # Specify an older Drupal type
+  ddev config --project-type=drupal9
+  ddev add-on get ${DIR}
+
+  health_checks
+  grep -q 'ddev drush si -y' "${TESTDIR}/.gitpod.yml"
+}

@@ -14,7 +14,11 @@ post_install_actions:
     if grep -q '#ddev-generated' ${DDEV_APPROOT}/.gitpod.yml; then
       PROJECT_TASKS="$DDEV_PROJECT_TYPE.yml"
       if test -f ${DDEV_APPROOT}/.ddev/gitpod-setup/${PROJECT_TASKS}; then
+        echo "Adding $DDEV_PROJECT_TYPE specific settings"
         cat ${DDEV_APPROOT}/.ddev/gitpod-setup/${PROJECT_TASKS} > ${DDEV_APPROOT}/.gitpod.yml
+      elif [[ "$DDEV_PROJECT_TYPE" =~ "drupal" ]] && [ -f "${DDEV_APPROOT}/.ddev/gitpod-setup/drupal.yml" ]; then
+        echo "Adding Drupal specific settings"
+        cat ${DDEV_APPROOT}/.ddev/gitpod-setup/drupal.yml > ${DDEV_APPROOT}/.gitpod.yml
       fi
       cat ${DDEV_APPROOT}/.ddev/gitpod-setup/.gitpod.yml >> ${DDEV_APPROOT}/.gitpod.yml
     fi
