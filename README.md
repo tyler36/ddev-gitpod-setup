@@ -3,6 +3,9 @@
 [![last commit](https://img.shields.io/github/last-commit/tyler36/ddev-gitpod-setup)](https://github.com/tyler36/ddev-gitpod-setup/commits)
 [![release](https://img.shields.io/github/v/release/tyler36/ddev-gitpod-setup)](https://github.com/tyler36/ddev-gitpod-setup/releases/latest)
 
+> [!Important]
+> As Gitpod [no longer exists](https://ona.com/stories/gitpod-is-now-ona), this add-on was archived on 2025-09-26.
+
 # ddev-gitpod-setup <!-- omit in toc -->
 
 - [What is ddev-gitpod-setup?](#what-is-ddev-gitpod-setup)
